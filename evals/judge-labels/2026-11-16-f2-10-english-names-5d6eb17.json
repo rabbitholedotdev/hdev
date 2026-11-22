@@ -1,0 +1,8 @@
+{
+  "plan": "docs/plan-f2-10-english-names.md",
+  "run": ".hdev/runs/judge-20261116T223312404547Z.json",
+  "judge_verdict": "fail",
+  "expected": "fail",
+  "by": "operator",
+  "note": "operator labeled em 20/11/2026 01:10 America/Sao_Paulo: fail certo. A suíte saiu vermelha (1 falha, AttributeError em hdev/check.py:282) e o critério pedia a suíte verde."
+}

@@ -1,0 +1,14 @@
+# Caminhos que nenhuma candidata do `hdev improve` pode tocar (ADR 0013).
+# Um prefixo por linha; pasta termina em `/`. Mudar esta lista só por ADR.
+hooks/
+harness/hooks/
+harness/prompts/_shared/
+harness/protected.txt
+hdev/check.py
+hdev/config.py
+hdev/sync.py
+hdev/judge.py
+hdev/gates/judge/
+hdev/improve/
+.claude/settings.json
+.github/CODEOWNERS

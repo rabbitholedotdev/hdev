@@ -1,0 +1,68 @@
+#!/bin/sh
+# CI local: lint, testes, hdev check. Para no primeiro passo que falha.
+# Uso (na raiz do repo): scripts/ci [--only lint|testes|check] [--root DIR]
+# --root vale só para o lint (fixture). Os outros passos rodam neste checkout.
+set -u
+
+start=$(pwd)
+here=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+repo=$(CDPATH= cd -- "$here/.." && pwd)
+
+only=""
+lint_root=$repo
+
+while [ $# -gt 0 ]; do
+  case "$1" in
+    --only)
+      [ $# -ge 2 ] || { echo "ci: falta o passo de --only" >&2; exit 2; }
+      only=$2
+      shift 2
+      ;;
+    --root)
+      [ $# -ge 2 ] || { echo "ci: falta o diretório de --root" >&2; exit 2; }
+      lint_root=$2
+      shift 2
+      ;;
+    *)
+      echo "ci: opção desconhecida: $1" >&2
+      exit 2
+      ;;
+  esac
+done
+
+case "$only" in
+  ""|lint|testes|check) ;;
+  *)
+    echo "ci: passo desconhecido: $only" >&2
+    exit 2
+    ;;
+esac
+
+case "$lint_root" in
+  /*) ;;
+  *) lint_root=$start/$lint_root ;;
+esac
+
+cd "$repo" || exit 1
+
+step() {
+  name=$1
+  shift
+  "$@"
+  status=$?
+  if [ "$status" -ne 0 ]; then
+    echo "ci: $name FALHOU"
+    exit "$status"
+  fi
+  echo "ci: $name ok"
+}
+
+if [ -z "$only" ] || [ "$only" = "lint" ]; then
+  step lint python3 "$here/lint.py" --root "$lint_root"
+fi
+if [ -z "$only" ] || [ "$only" = "testes" ]; then
+  step testes python3 -m unittest discover -s tests -q
+fi
+if [ -z "$only" ] || [ "$only" = "check" ]; then
+  step check python3 bin/hdev check
+fi

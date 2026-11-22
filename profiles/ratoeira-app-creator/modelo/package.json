@@ -1,0 +1,13 @@
+{
+  "name": "ratoeira-{{nome}}",
+  "private": true,
+  "type": "module",
+  "description": "{{titulo}}, app da Ratoeira",
+  "engines": {
+    "node": ">=22.13"
+  },
+  "scripts": {
+    "dev": "node --disable-warning=ExperimentalWarning dev.mjs",
+    "test": "node --disable-warning=ExperimentalWarning --test teste/*.test.mjs"
+  }
+}

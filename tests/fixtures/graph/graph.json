@@ -1,0 +1,24 @@
+{
+  "directed": true,
+  "nodes": [
+    {"id": "hdev_stop", "label": "stop.py", "source_file": "hdev/stop.py", "file_type": "code"},
+    {"id": "hdev_stop_run", "label": "run()", "source_file": "hdev/stop.py", "file_type": "code"},
+    {"id": "hdev_cli", "label": "cli.py", "source_file": "hdev/cli.py", "file_type": "code"},
+    {"id": "hdev_cli_main", "label": "main()", "source_file": "hdev/cli.py", "file_type": "code"},
+    {"id": "hdev_config", "label": "config.py", "source_file": "hdev/config.py", "file_type": "code"},
+    {"id": "tests_test_stop", "label": "test_stop.py", "source_file": "tests/test_stop.py", "file_type": "code"},
+    {"id": "tests_test_cli", "label": "test_cli.py", "source_file": "tests/test_cli.py", "file_type": "code"},
+    {"id": "tests_test_other", "label": "test_other.py", "source_file": "tests/test_other.py", "file_type": "code"}
+  ],
+  "links": [
+    {"source": "tests_test_stop", "target": "hdev_stop", "relation": "imports_from", "confidence": "EXTRACTED", "confidence_score": 1.0},
+    {"source": "hdev_cli", "target": "hdev_stop", "relation": "imports_from", "confidence": "EXTRACTED", "confidence_score": 1.0},
+    {"source": "tests_test_cli", "target": "hdev_cli", "relation": "imports_from", "confidence": "EXTRACTED", "confidence_score": 1.0},
+    {"source": "hdev_cli_main", "target": "hdev_stop_run", "relation": "calls", "confidence": "EXTRACTED", "confidence_score": 1.0},
+    {"source": "hdev_stop", "target": "hdev_config", "relation": "imports_from", "confidence": "EXTRACTED", "confidence_score": 1.0},
+    {"source": "hdev_stop", "target": "json", "relation": "imports", "confidence": "EXTRACTED", "confidence_score": 1.0},
+    {"source": "tests_test_other", "target": "hdev_stop", "relation": "imports_from", "confidence": "INFERRED", "confidence_score": 0.8},
+    {"source": "tests_test_other", "target": "hdev_stop_run", "relation": "calls", "confidence": "INFERRED", "confidence_score": 0.8},
+    {"source": "tests_test_other", "target": "hdev_config", "relation": "imports_from", "confidence": "AMBIGUOUS", "confidence_score": 0.55}
+  ]
+}

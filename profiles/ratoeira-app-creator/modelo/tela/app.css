@@ -1,0 +1,12 @@
+/* Duas versões, clara e escura, seguindo o data-ratoeira-tema que a ponte põe (APPS.md, "Tela", "Tema"). */
+:root{--fundo:#fbfaf7;--ilha:#fff;--texto:#1f1e1b;--suave:#6b6960;--linha:#e6e3da;--acento:#2f6f4f}
+:root[data-ratoeira-tema=escuro]{--fundo:#1e1e1b;--ilha:#262622;--texto:#eeece4;--suave:#a9a69b;--linha:#3a3934;--acento:#7cc59f;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;font:15px/1.45 system-ui,sans-serif;background:var(--fundo);color:var(--texto)}
+.topo{display:flex;align-items:center;gap:12px;padding:14px 20px;border-bottom:1px solid var(--linha)}
+.topo h1{font-size:17px;margin:0;flex:1}
+.status{color:var(--suave);font-size:13px}
+main{padding:20px;max-width:960px}
+.ilha{background:var(--ilha);border:1px solid var(--linha);border-radius:12px;padding:16px}
+button{font:inherit;border:1px solid var(--linha);background:var(--ilha);color:var(--texto);border-radius:8px;padding:6px 12px;cursor:pointer}
+button:hover{border-color:var(--acento)}

@@ -1,0 +1,109 @@
+{
+  "env": {
+    "CLAUDE_AUTOCOMPACT_PCT_OVERRIDE": "60"
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/session.py\"",
+            "timeout": 30,
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "PreToolUse": [
+      {
+        "hooks": [
+          {
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/pre_tool.py\"",
+            "timeout": 30,
+            "type": "command"
+          }
+        ],
+        "matcher": "Bash"
+      },
+      {
+        "hooks": [
+          {
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/pre_tool.py\"",
+            "timeout": 30,
+            "type": "command"
+          }
+        ],
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Read|AskUserQuestion"
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/stop_gate.py\"",
+            "timeout": 900,
+            "type": "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/session.py\"",
+            "timeout": 30,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(bin/hdev check*)",
+      "Bash(bin/hdev judge*)",
+      "Bash(git add*)",
+      "Bash(git commit*)",
+      "Bash(git diff*)",
+      "Bash(git log*)",
+      "Bash(git status*)",
+      "Bash(grok -p *)",
+      "Bash(grok --json-schema *)",
+      "Bash(grok --output-format *)",
+      "Bash(grok --prompt-file *)",
+      "Bash(pytest *)",
+      "Bash(python3 -m pytest*)",
+      "Bash(python3 -m unittest*)",
+      "Edit(.claude/**)"
+    ],
+    "defaultMode": "acceptEdits",
+    "deny": [
+      "Bash(sudo *)",
+      "Bash(sudo)",
+      "Bash(git push *)",
+      "Bash(git push)",
+      "Bash(rm -rf *)",
+      "Bash(curl *)",
+      "Bash(curl)",
+      "Bash(wget *)",
+      "Bash(wget)",
+      "Read(~/.config/**)",
+      "Read(~/.claude/**)",
+      "Read(~/.codex/**)",
+      "Read(~/.grok/**)",
+      "Read(~/.cursor/**)",
+      "Read(~/.ssh/**)",
+      "Read(/etc/shadow)"
+    ]
+  },
+  "skillOverrides": {
+    "briefing": "off",
+    "handoff": "on",
+    "hdev": "on",
+    "planejar": "on",
+    "revisar-diff": "on",
+    "revisar-spec": "on",
+    "spec": "off"
+  }
+}

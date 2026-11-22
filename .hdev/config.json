@@ -1,0 +1,164 @@
+{
+  "version": 1,
+  "profile": "harness-developer",
+  "phase": "F2",
+  "base_branch": "master",
+  "roles": {
+    "planner": {
+      "cli": "claude",
+      "model": "claude-opus-5-5"
+    },
+    "executor": {
+      "cli": "claude",
+      "model": "claude-opus-5-5"
+    },
+    "judge": {
+      "cli": "grok",
+      "model": "grok-4.7"
+    },
+    "judge_fallback": {
+      "cli": "codex",
+      "model": "gpt-6.1-sol"
+    },
+    "isolated": {
+      "cli": "grok",
+      "model": "grok-4.7"
+    },
+    "reconciler": {
+      "cli": "agy",
+      "model": "gemini-3-pro"
+    }
+  },
+  "gates": {
+    "fast": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-q"
+    ],
+    "full": [
+      "python3",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests",
+      "-v"
+    ],
+    "shards": 4,
+    "on_stop": true,
+    "timeout": 600
+  },
+  "skills": {
+    "F0": [
+      "hdev"
+    ],
+    "F1": [
+      "hdev",
+      "briefing",
+      "spec",
+      "revisar-spec",
+      "planejar"
+    ],
+    "F2": [
+      "handoff",
+      "hdev",
+      "planejar",
+      "revisar-diff",
+      "revisar-spec"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/pre_tool.py\"",
+            "timeout": 30
+          }
+        ]
+      },
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit|Read|AskUserQuestion",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/pre_tool.py\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/stop_gate.py\"",
+            "timeout": 900
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/session.py\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/harness/hooks/session.py\"",
+            "timeout": 30
+          }
+        ]
+      }
+    ]
+  },
+  "caps": {
+    "agents": 60,
+    "hooks": 5,
+    "skills": 5,
+    "subagents": 2,
+    "progress": 2000,
+    "context_initial": 15000
+  },
+  "eval": {
+    "agent_cmd": "claude -p --output-format json"
+  },
+  "judge": {
+    "timeout": 600
+  },
+  "jev": {
+    "ref": "op://Vault/jev-api/credential",
+    "model": "jev-latest"
+  },
+  "handoff": {
+    "window_tokens": 200000,
+    "window_by_model": {
+      "claude-opus-5-5": 1000000
+    },
+    "threshold": 0.5,
+    "cooldown_sec": 600,
+    "max_per_day": 8,
+    "jev": true,
+    "agente": "claude",
+    "mode": "auto"
+  },
+  "naming": {
+    "mode": "fail"
+  }
+}

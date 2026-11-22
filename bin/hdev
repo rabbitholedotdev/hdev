@@ -1,0 +1,9 @@
+#!/usr/bin/env python3
+"""hdev — núcleo harness-dev. Uso: hdev check | hdev init <pasta> | hdev judge --plan <plano>."""
+import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+from hdev.cli import main  # noqa: E402
+
+sys.exit(main())

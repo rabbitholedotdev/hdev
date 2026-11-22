@@ -1,0 +1,4 @@
+#!/bin/sh
+# Checkout: o mesmo cache do post-commit. Sha igual ao HEAD não chama o graphify.
+here=$(CDPATH= cd -- "$(dirname "$0")" && pwd) || exit 0
+exec "$here/post-commit"
