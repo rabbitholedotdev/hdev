@@ -1,0 +1,8 @@
+{
+  "plan": "docs/plan-f1-pacote-juiz.md",
+  "run": ".hdev/runs/judge-20261114T181114601203Z.json",
+  "judge_verdict": "unsure",
+  "expected": "unsure",
+  "by": "operator",
+  "note": "operator agrees (16:05 America/Sao_Paulo) com o unsure: os itens mecânicos passaram; o registro em .hdev/runs/ não entra no git."
+}

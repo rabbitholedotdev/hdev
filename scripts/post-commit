@@ -1,0 +1,30 @@
+#!/bin/sh
+# Cache do grafo no commit. Hook de git, não do Claude: não entra nos 5 registros.
+# Sem graphify o commit segue. O grafo é cache.
+if [ "$HDEV_SKIP_GRAPH" = "1" ]; then
+  exit 0
+fi
+# Hook de git costuma vir com PATH curto. O binário da VM fica em ~/.local/bin.
+if [ -n "$HOME" ]; then
+  case ":$PATH:" in
+    *":$HOME/.local/bin:"*) ;;
+    *) PATH="$HOME/.local/bin:$PATH" ;;
+  esac
+  export PATH
+fi
+root=$(git rev-parse --show-toplevel) || exit 0
+run() {
+  python3 "$1" graph update --root "$root" || echo "post-commit: grafo não atualizado" >&2
+  exit 0
+}
+for cli in "$root/bin/hdev" "$root/.harnessdev/bin/hdev"; do
+  if [ -f "$cli" ]; then
+    run "$cli"
+  fi
+done
+if command -v hdev >/dev/null 2>&1; then
+  hdev graph update --root "$root" || echo "post-commit: grafo não atualizado" >&2
+  exit 0
+fi
+echo "post-commit: hdev não encontrado; grafo não atualizado" >&2
+exit 0

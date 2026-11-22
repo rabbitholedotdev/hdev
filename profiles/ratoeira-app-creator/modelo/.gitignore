@@ -1,0 +1,8 @@
+.dados/
+node_modules/
+.env
+.env.*
+!.env.exemplo
+*.db
+*.db-shm
+*.db-wal

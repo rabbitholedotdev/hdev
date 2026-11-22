@@ -1,0 +1,8 @@
+{
+  "plan": "docs/plan-f0-eval-fumaca.md",
+  "run": ".hdev/runs/judge-20261114T181531523323Z.json",
+  "judge_verdict": "pass",
+  "expected": "pass",
+  "by": "operator",
+  "note": "operator agrees (16:05 America/Sao_Paulo) com o pass."
+}

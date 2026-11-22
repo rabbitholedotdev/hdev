@@ -1,0 +1,8 @@
+{
+  "plan": "docs/plan-f1-harnessdev.md",
+  "run": ".hdev/runs/judge-20261114T180747512367Z.json",
+  "judge_verdict": "pass",
+  "expected": "pass",
+  "by": "operator",
+  "note": "operator agrees (16:05 America/Sao_Paulo) com o pass."
+}

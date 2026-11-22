@@ -1,0 +1,8 @@
+{
+  "plan": "docs/plan-f0-estrutura.md",
+  "run": ".hdev/runs/judge-20261114T181201684503Z.json",
+  "judge_verdict": "fail",
+  "expected": "fail",
+  "by": "operator",
+  "note": "operator agrees (16:05 America/Sao_Paulo): no commit isolado o check falhou (hook citado sem arquivo) e não havia tests/."
+}

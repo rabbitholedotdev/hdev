@@ -1,0 +1,8 @@
+{
+  "plan": "docs/plan-f0-skill-brainstorm.md",
+  "run": ".hdev/runs/judge-20261114T181334487887Z.json",
+  "judge_verdict": "fail",
+  "expected": "fail",
+  "by": "operator",
+  "note": "operator agrees (16:05 America/Sao_Paulo): o commit da peça só trouxe plano e spec; o SKILL.md não estava no diff e faltava tests/."
+}

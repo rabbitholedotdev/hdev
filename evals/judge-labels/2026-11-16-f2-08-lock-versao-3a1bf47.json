@@ -1,0 +1,8 @@
+{
+  "plan": "docs/plan-f2-08-lock-versao.md",
+  "run": ".hdev/runs/judge-20261116T050919836334Z.json",
+  "judge_verdict": "unsure",
+  "expected": "pass",
+  "by": "operator",
+  "note": "operator labeled em 20/11/2026 01:10 America/Sao_Paulo: devia ser pass. Mesmo head 3a1bf47 passou 2 min depois (judge-20261116T051121814116Z) com 270 testes OK; o unsure veio sem justificativa, ruído do modelo."
+}

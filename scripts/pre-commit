@@ -1,0 +1,14 @@
+#!/bin/sh
+# Portão do núcleo harness-dev: hdev check antes de cada commit.
+# Núcleo: bin/hdev. App: .harnessdev/bin/hdev (release fixada no .harnessdev.lock). Senão, hdev no PATH.
+root=$(git rev-parse --show-toplevel) || exit 1
+for cli in "$root/bin/hdev" "$root/.harnessdev/bin/hdev"; do
+  if [ -f "$cli" ]; then
+    exec python3 "$cli" check --root "$root"
+  fi
+done
+if command -v hdev >/dev/null 2>&1; then
+  exec hdev check --root "$root"
+fi
+echo "pre-commit: hdev não encontrado (bin/hdev, .harnessdev/bin/hdev ou PATH)" >&2
+exit 1

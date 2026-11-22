@@ -1,0 +1,8 @@
+{
+  "plan": "work/v2-pr3-manifest-sync/plan.md",
+  "run": ".hdev/runs/judge-20261119T194238136370Z.json",
+  "judge_verdict": "unsure",
+  "expected": "unsure",
+  "by": "operator",
+  "note": "operator labeled em 20/11/2026 01:10 America/Sao_Paulo: unsure certo. Nenhum anexo de evidência casou com o plano, então a saída dos comandos não chegou ao juiz; não chutar pass sem prova é o comportamento esperado."
+}

@@ -1,0 +1,15 @@
+{
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "command": "python3 \"$(git rev-parse --show-toplevel)/harness/hooks/stop_gate.py\"",
+            "timeout": 900,
+            "type": "command"
+          }
+        ]
+      }
+    ]
+  }
+}

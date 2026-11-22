@@ -1,0 +1,8 @@
+{
+  "plan": "docs/plan-f1-juiz-grok.md",
+  "run": ".hdev/runs/judge-20261114T181719985156Z.json",
+  "judge_verdict": "pass",
+  "expected": "pass",
+  "by": "operator",
+  "note": "operator agrees (16:05 America/Sao_Paulo) com o pass."
+}

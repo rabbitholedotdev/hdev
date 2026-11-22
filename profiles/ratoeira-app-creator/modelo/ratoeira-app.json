@@ -1,0 +1,20 @@
+{
+  "nome": "{{nome}}",
+  "titulo": "{{titulo}}",
+  "descricao": "{{descricao}}",
+  "porta": {{porta}},
+  "iniciar": "exec node --disable-warning=ExperimentalWarning servidor.mjs",
+  "saude": "/saude",
+  "papeis": ["admin", "membro"],
+  "publico": [],
+  "pacotes": ["sqlite3"],
+  "memoria": "256M",
+  "cpu": "25%",
+  "rotinas": [
+    {
+      "nome": "backup",
+      "comando": "mkdir -p $DADOS/backups && sqlite3 $DADOS/{{nome}}.db \".backup $DADOS/backups/{{nome}}-$(date +%Y%m%d).db\" && find $DADOS/backups -name '{{nome}}-*.db' -mtime +14 -delete",
+      "quando": "*-*-* 06:40:00"
+    }
+  ]
+}

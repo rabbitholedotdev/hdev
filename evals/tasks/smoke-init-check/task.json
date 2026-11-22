@@ -1,0 +1,19 @@
+{
+  "id": "smoke-init-check",
+  "repo": ".",
+  "base_sha": "8ec80b39eaa06655f1dddc1754803008dcfde50f",
+  "prompt": "Rode `bin/hdev check` na raiz desta pasta e responda numa linha: passou ou falhou e, se falhou, qual linha. Não edite nenhum arquivo.",
+  "spec": null,
+  "summary": "init liga uma pasta vazia à release (ADR 0002), check passa; AGENTS.md estourado faz o check falhar.",
+  "caps": {"runs": 12},
+  "draft": false,
+  "acceptance": [
+    {"cmd": "python3 -c \"print('smoke-init-check')\"", "expect_exit": 0, "expect_output": "smoke-init-check"}
+  ],
+  "steps": [
+    {"run": ["init", "{tmp}", "--core", "{core}"], "expect_exit": 0, "expect_output": "v9.9.9"},
+    {"run": ["check", "--root", "{tmp}"], "expect_exit": 0, "expect_output": "harnessdev"},
+    {"append_lines": {"file": "AGENTS.md", "count": 81}},
+    {"run": ["check", "--root", "{tmp}"], "expect_exit": 1, "expect_output": "agents"}
+  ]
+}

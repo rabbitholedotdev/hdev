@@ -1,0 +1,52 @@
+[
+  {
+    "kind": "lesson",
+    "title": "Chave de cache do juiz sem saída volátil",
+    "when_to_use": "quando a chave de cache de um veredito lê log de teste",
+    "not_for": "out-of-domain example",
+    "tags": ["juiz", "cache", "teste", "check"],
+    "scope": "global",
+    "source": "reflect",
+    "body": "quando a chave de cache do juiz inclui saída volátil de teste, faça a chave só com a árvore e o pacote estável, porque a saída muda entre corridas."
+  },
+  {
+    "kind": "lesson",
+    "title": "Evidência onde o juiz lê",
+    "when_to_use": "quando a prova da peça precisa chegar ao juiz no aceite",
+    "not_for": "out-of-domain example",
+    "tags": ["juiz", "evidencia", "aceite"],
+    "scope": "global",
+    "source": "reflect",
+    "body": "quando a prova precisa ser lida pelo juiz, faça o arquivo na pasta de evidência da unidade, porque fora dela o juiz não lê."
+  },
+  {
+    "kind": "lesson",
+    "title": "Teste sem valor volátil no log",
+    "when_to_use": "quando um teste imprime valor volátil no unittest",
+    "not_for": "out-of-domain example",
+    "tags": ["teste", "unittest", "check", "aceite"],
+    "scope": "global",
+    "source": "reflect",
+    "body": "quando o teste imprime caminho temporário ou horário de corrida, faça o teste calar esses valores, porque a chave do juiz muda e o cache não acerta."
+  },
+  {
+    "kind": "lesson",
+    "title": "Marco só na branch base",
+    "when_to_use": "quando o fechamento roda fora da branch base",
+    "not_for": "out-of-domain example",
+    "tags": ["fechar", "marco"],
+    "scope": "global",
+    "source": "reflect",
+    "body": "quando o fechamento roda fora da branch base, faça o veredito ir para o registro e não criar o marco, porque o marco só nasce na branch base."
+  },
+  {
+    "kind": "lesson",
+    "title": "Parada só na lista fechada",
+    "when_to_use": "quando o motivo da parada não está na lista fechada",
+    "not_for": "out-of-domain example",
+    "tags": ["parada", "decisao"],
+    "scope": "global",
+    "source": "reflect",
+    "body": "quando o motivo não está na lista fechada, faça o padrão conservador e uma linha de decisão, porque parar fora da lista segura a sessão."
+  }
+]

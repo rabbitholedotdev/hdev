@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.hdev/state/
+.hdev/runs/
+.hdev/cache/
+logs/
+releases/
+.hdev/overlays/
+.env
+.venv/
+venv/

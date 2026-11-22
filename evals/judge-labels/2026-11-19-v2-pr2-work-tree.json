@@ -1,0 +1,8 @@
+{
+  "plan": "work/v2-pr2-work-tree/plan.md",
+  "run": ".hdev/runs/judge-20261119T185307198724Z.json",
+  "judge_verdict": "pass",
+  "expected": "pass",
+  "by": "operator",
+  "note": "operator labeled em 20/11/2026 01:10 America/Sao_Paulo: concorda com o pass; PR #4 mergeada com suíte verde e conferida na VM."
+}

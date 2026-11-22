@@ -1,0 +1,16 @@
+{
+  "id": "ratoeira-app-new-check",
+  "repo": ".",
+  "base_sha": "8ec80b39eaa06655f1dddc1754803008dcfde50f",
+  "prompt": null,
+  "spec": null,
+  "summary": "app new monta um app da Ratoeira pelo modelo e o app check passa; manifesto quebrado faz o check falhar.",
+  "caps": {"runs": 12},
+  "draft": false,
+  "acceptance": [
+    {"run": ["app", "new", "painel", "--area", "{tmp}"], "expect_exit": 0, "expect_output": "porta 8800"},
+    {"run": ["app", "check", "{tmp}/apps/painel"], "expect_exit": 0, "expect_output": "tela"},
+    {"append_lines": {"file": "apps/painel/ratoeira-app.json", "count": 1}},
+    {"run": ["app", "check", "{tmp}/apps/painel"], "expect_exit": 1, "expect_output": "manifesto"}
+  ]
+}

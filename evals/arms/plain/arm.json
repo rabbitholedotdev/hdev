@@ -1,0 +1,12 @@
+{
+  "id": "plain",
+  "kind": "plain",
+  "strip": [
+    "CLAUDE.md",
+    "AGENTS.md",
+    ".claude/settings.json",
+    ".claude/skills",
+    ".claude/hooks",
+    "harness/prompts"
+  ]
+}
